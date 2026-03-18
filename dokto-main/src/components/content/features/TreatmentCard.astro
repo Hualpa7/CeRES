@@ -1,0 +1,68 @@
+---
+interface Props {
+  id: string
+  image: string
+  title: string
+  description: string
+  fullDescription?: string
+}
+
+const { id, image, title, description, fullDescription = description } = Astro.props
+---
+
+<div
+  class="embla__slide group cursor-pointer"
+  @click="
+    activeCard = {
+      id: $el.dataset.cardId,
+      image: $el.dataset.cardImage,
+      title: $el.dataset.cardTitle,
+      description: $el.dataset.cardDescription,
+      fullDescription: $el.dataset.cardFullDescription
+    };
+    modalOpen = true
+  "
+  data-card-id={id}
+  data-card-image={image}
+  data-card-title={title}
+  data-card-description={description}
+  data-card-full-description={fullDescription}
+>
+  <div class="bg-white dark:bg-muted-900 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 overflow-hidden h-full flex flex-col">
+    <!-- Imagen -->
+    <div class="relative w-full h-64 overflow-hidden bg-muted-100 dark:bg-muted-800">
+      <img
+        src={image}
+        alt={title}
+        class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300 transform-gpu"
+      />
+    </div>
+
+    <!-- Contenido -->
+    <div class="p-6 flex flex-col justify-between flex-grow">
+      <div>
+        <h3 class="font-semibold text-xl text-muted-800 dark:text-white line-clamp-2 mb-2">
+          {title}
+        </h3>
+        <p class="text-sm text-muted-600 dark:text-muted-400 line-clamp-3">
+          {description}
+        </p>
+      </div>
+
+      <!-- CTA -->
+      <div class="pt-4">
+        <p class="text-xs text-primary-500 font-medium group-hover:text-primary-600 transition-colors">
+          Ver más →
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .embla__slide {
+    flex: 0 0 100%;
+    min-width: 0;
+    padding: 0.5rem;
+  }
+</style>
