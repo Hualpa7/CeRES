@@ -2,366 +2,142 @@
 import Card from "@components/base/Card.astro";
 ---
 
-<div class="grid md:grid-cols-3 ltablet:grid-cols-3 lg:grid-cols-3 gap-x-6 ptablet:gap-x-4 gap-y-16 pt-10">
+<div class="grid md:grid-cols-3 ltablet:grid-cols-3 lg:grid-cols-3 gap-x-6 ptablet:gap-x-4 gap-y-20 pt-10">
   <div x-show="activeCategory === 'all' || activeCategory === 'cardiology'" class="group">
-    <Card class="'p-4'">
+    <Card class="'p-0 pt-20 transition-all duration-300 hover:shadow-2xl hover:scale-105'">
       <div
-        class="relative w-full h-40 rounded-lg bg-muted-200 dark:bg-muted-800 overflow-hidden"
+        class="relative w-full h-40 rounded-t-lg bg-muted-200 dark:bg-muted-800 overflow-visible -mt-20 mb-4 px-4"
       >
         <img
           @click="activeDoctor = { name: 'Lic. Facundo Sarmiento', title: 'Lic. en Kinesiologia y Fisioterapia', bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ergo illi intellegunt quid', img: '/img/illustrations/doctors/doctor-1.svg', rating: '4.8/5' }; modalOpen = true"
-          class="absolute bottom-0 inset-x-0 mx-auto w-full max-w-[170px] ptablet:max-w-[150px] transition-transform duration-300 transform-gpu group-hover:scale-110 cursor-pointer"
-          src="/img/illustrations/doctors/doctor-1.svg"
+          class="absolute -top-16 left-1/2 -translate-x-1/2 w-full max-w-[170px] ptablet:max-w-[150px] transition-transform duration-300 transform-gpu group-hover:scale-110 cursor-pointer"
+          src="/img/illustrations/doctors/facundo.jpg"
           alt="Doctor"
         />
       </div>
-      <div class="font-sans mt-3">
+      <div class="font-sans px-4 pb-4">
         <h4 class="font-semibold text-muted-800 dark:text-muted-100">
           Lic. Facundo Sarmiento
         </h4>
         <p class="text-sm text-muted-400">Lic. en Kinesiologia y Fisioterapia</p>
       </div>
-      <div class="mt-2">
+      <div class="px-4 pb-4">
         <p class="text-sm ptablet:text-xs text-muted-500 dark:text-muted-400">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ergo illi
           intellegunt quid
         </p>
       </div>
-      <!-- Tooltips and icons commented out
-      <div class="flex items-center justify-between font-sans mt-3"> ... </div>
-      -->
     </Card>
   </div>
   <!-- Doctor -->
   <div x-show="activeCategory === 'all' || activeCategory === 'gynaecology'" class="group">
-    <Card class="'p-4'">
+    <Card class="'p-0 pt-20 transition-all duration-300 hover:shadow-2xl hover:scale-105'">
       <div
-        class="relative w-full h-40 rounded-lg bg-muted-200 dark:bg-muted-800 overflow-hidden"
+        class="relative w-full h-40 rounded-t-lg bg-muted-200 dark:bg-muted-800 overflow-visible -mt-20 mb-4 px-4"
       >
         <img
           @click="activeDoctor = { name: 'Dr. Aaron Zimmerman', title: 'Gynaecologist', bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ergo illi intellegunt quid', img: '/img/illustrations/doctors/doctor-2.svg', rating: '4.4/5' }; modalOpen = true"
-          class="absolute bottom-0 inset-x-0 mx-auto w-full max-w-[170px] ptablet:max-w-[150px] transition-transform duration-300 transform-gpu group-hover:scale-110 cursor-pointer"
-          src="/img/illustrations/doctors/doctor-2.svg"
+          class="absolute -top-16 left-1/2 -translate-x-1/2 w-full max-w-[170px] ptablet:max-w-[150px] transition-transform duration-300 transform-gpu group-hover:scale-110 cursor-pointer"
+          src="/img/illustrations/doctors/laura.jpg"
           alt="Doctor"
         />
       </div>
-      <div class="font-sans mt-3">
+      <div class="font-sans px-4 pb-4">
         <h4 class="font-semibold text-muted-800 dark:text-muted-100">
-          Dr. Aaron Zimmerman
+          Lic. Laura Brizuela
         </h4>
-        <p class="text-sm text-muted-400">Gynaecologist</p>
+        <p class="text-sm text-muted-400">Lic. en Kinesiologia y Fisioterapia</p>
       </div>
-      <div class="mt-2">
+      <div class="px-4 pb-4">
         <p class="text-sm ptablet:text-xs text-muted-500 dark:text-muted-400">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ergo illi
           intellegunt quid
         </p>
       </div>
-      <!-- Tooltips and icons commented out
-      <div class="flex items-center justify-between font-sans mt-3"> ... </div>
-      -->
     </Card>
   </div>
   <!-- Doctor -->
   <div x-show="activeCategory === 'all' || activeCategory === 'neurology'" class="group">
-    <Card class="'p-4'">
+    <Card class="'p-0 pt-20 transition-all duration-300 hover:shadow-2xl hover:scale-105'">
       <div
-        class="relative w-full h-40 rounded-lg bg-muted-200 dark:bg-muted-800 overflow-hidden"
+        class="relative w-full h-40 rounded-t-lg bg-muted-200 dark:bg-muted-800 overflow-visible -mt-20 mb-4 px-4"
       >
         <img
           @click="activeDoctor = { name: 'Dr. Michael Harris', title: 'Neurologist', bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ergo illi intellegunt quid', img: '/img/illustrations/doctors/doctor-3.svg', rating: '5/5' }; modalOpen = true"
-          class="absolute bottom-0 inset-x-0 mx-auto w-full max-w-[170px] ptablet:max-w-[150px] transition-transform duration-300 transform-gpu group-hover:scale-110 cursor-pointer"
-          src="/img/illustrations/doctors/doctor-3.svg"
+          class="absolute -top-16 left-1/2 -translate-x-1/2 w-full max-w-[170px] ptablet:max-w-[150px] transition-transform duration-300 transform-gpu group-hover:scale-110 cursor-pointer"
+          src="/img/illustrations/doctors/jorge.jpg"
           alt="Doctor"
         />
       </div>
-      <div class="font-sans mt-3">
+      <div class="font-sans px-4 pb-4">
         <h4 class="font-semibold text-muted-800 dark:text-muted-100">
-          Dr. Michael Harris
+          Lic. Jorge Castellanos
         </h4>
-        <p class="text-sm text-muted-400">Neurologist</p>
+        <p class="text-sm text-muted-400">Lic. en Kinesiologia y Fisioterapia</p>
       </div>
-      <div class="mt-2">
+      <div class="px-4 pb-4">
         <p class="text-sm ptablet:text-xs text-muted-500 dark:text-muted-400">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ergo illi
           intellegunt quid
         </p>
       </div>
-      <!-- Tooltips and icons commented out
-      <div class="flex items-center justify-between font-sans mt-3"> ... </div>
-      -->
     </Card>
   </div>
   <!-- Doctor -->
   <div x-show="activeCategory === 'all' || activeCategory === 'dermatology'" class="group">
-    <Card class="'p-4'">
+    <Card class="'p-0 pt-20 transition-all duration-300 hover:shadow-2xl hover:scale-105'">
       <div
-        class="relative w-full h-40 rounded-lg bg-muted-200 dark:bg-muted-800 overflow-hidden"
+        class="relative w-full h-40 rounded-t-lg bg-muted-200 dark:bg-muted-800 overflow-visible -mt-20 mb-4 px-4"
       >
         <img
           @click="activeDoctor = { name: 'Dr. Eliana Dasilva', title: 'Dermatologist', bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ergo illi intellegunt quid', img: '/img/illustrations/doctors/doctor-4.svg', rating: '4.8/5' }; modalOpen = true"
-          class="absolute bottom-0 inset-x-0 mx-auto w-full max-w-[170px] ptablet:max-w-[150px] transition-transform duration-300 transform-gpu group-hover:scale-110 cursor-pointer"
-          src="/img/illustrations/doctors/doctor-4.svg"
+          class="absolute -top-16 left-1/2 -translate-x-1/2 w-full max-w-[170px] ptablet:max-w-[150px] transition-transform duration-300 transform-gpu group-hover:scale-110 cursor-pointer"
+          src="/img/illustrations/doctors/juan.jpg"
           alt="Doctor"
         />
       </div>
-      <div class="font-sans mt-3">
+      <div class="font-sans px-4 pb-4">
         <h4 class="font-semibold text-muted-800 dark:text-muted-100">
-          Dr. Eliana Dasilva
+          Lic. Montellano Juan
         </h4>
-        <p class="text-sm text-muted-400">Dermatologist</p>
+        <p class="text-sm text-muted-400">Lic. en Kinesiologia y Fisioterapia</p>
       </div>
-      <div class="mt-2">
+      <div class="px-4 pb-4">
         <p class="text-sm ptablet:text-xs text-muted-500 dark:text-muted-400">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ergo illi
           intellegunt quid
         </p>
       </div>
-      <!-- Tooltips and icons commented out
-      <div class="flex items-center justify-between font-sans mt-3"> ... </div>
-      -->
     </Card>
   </div>
   <!-- Doctor -->
   <div x-show="activeCategory === 'all' || activeCategory === 'general'" class="group">
-    <Card class="'p-4'">
+    <Card class="'p-0 pt-20 transition-all duration-300 hover:shadow-2xl hover:scale-105'">
       <div
-        class="relative w-full h-40 rounded-lg bg-muted-200 dark:bg-muted-800 overflow-hidden"
+        class="relative w-full h-40 rounded-t-lg bg-muted-200 dark:bg-muted-800 overflow-visible -mt-20 mb-4 px-4"
       >
         <img
           @click="activeDoctor = { name: 'Dr. Clark Novak', title: 'Generalist', bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ergo illi intellegunt quid', img: '/img/illustrations/doctors/doctor-5.svg', rating: '4.5/5' }; modalOpen = true"
-          class="absolute bottom-0 inset-x-0 mx-auto w-full max-w-[170px] ptablet:max-w-[150px] transition-transform duration-300 transform-gpu group-hover:scale-110 cursor-pointer"
-          src="/img/illustrations/doctors/doctor-5.svg"
+          class="absolute -top-16 left-1/2 -translate-x-1/2 w-full max-w-[170px] ptablet:max-w-[150px] transition-transform duration-300 transform-gpu group-hover:scale-110 cursor-pointer"
+          src="/img/illustrations/doctors/juan.jpg"
           alt="Doctor"
         />
       </div>
-      <div class="font-sans mt-3">
+      <div class="font-sans px-4 pb-4">
         <h4 class="font-semibold text-muted-800 dark:text-muted-100">
-          Dr. Clark Novak
+          Lic. Estrella Eduardo
         </h4>
-        <p class="text-sm text-muted-400">Generalist</p>
+        <p class="text-sm text-muted-400">Lic. en Kinesiologia y Fisioterapia</p>
       </div>
-      <div class="mt-2">
+      <div class="px-4 pb-4">
         <p class="text-sm ptablet:text-xs text-muted-500 dark:text-muted-400">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ergo illi
           intellegunt quid
         </p>
       </div>
-      <!-- Tooltips and icons commented out
-      <div class="flex items-center justify-between font-sans mt-3"> ... </div>
-      -->
     </Card>
   </div>
-  <!-- Doctor -->
-  <div x-show="activeCategory === 'all' || activeCategory === 'surgery'" class="group">
-    <Card class="'p-4'">
-      <div
-        class="relative w-full h-40 rounded-lg bg-muted-200 dark:bg-muted-800 overflow-hidden"
-      >
-        <img
-          @click="activeDoctor = { name: 'Dr. Jenna Holloway', title: 'Surgeon', bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ergo illi intellegunt quid', img: '/img/illustrations/doctors/doctor-6.svg', rating: '4.9/5' }; modalOpen = true"
-          class="absolute bottom-0 inset-x-0 mx-auto w-full max-w-[170px] ptablet:max-w-[150px] transition-transform duration-300 transform-gpu group-hover:scale-110 cursor-pointer"
-          src="/img/illustrations/doctors/doctor-6.svg"
-          alt="Doctor"
-        />
-      </div>
-      <div class="font-sans mt-3">
-        <h4 class="font-semibold text-muted-800 dark:text-muted-100">
-          Dr. Jenna Holloway
-        </h4>
-        <p class="text-sm text-muted-400">Surgeon</p>
-      </div>
-      <div class="mt-2">
-        <p class="text-sm ptablet:text-xs text-muted-500 dark:text-muted-400">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ergo illi
-          intellegunt quid
-        </p>
-      </div>
-      <!-- Tooltips and icons commented out
-      <div class="flex items-center justify-between font-sans mt-3"> ... </div>
-      -->
-    </Card>
-  </div>
-  <!-- Doctor -->
-  <div x-show="activeCategory === 'all' || activeCategory === 'gynaecology'" class="group">
-    <Card class="'p-4'">
-      <div
-        class="relative w-full h-40 rounded-lg bg-muted-200 dark:bg-muted-800 overflow-hidden"
-      >
-        <img
-          @click="activeDoctor = { name: 'Dr. Howard Wright', title: 'Gynaecologist', bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ergo illi intellegunt quid', img: '/img/illustrations/doctors/doctor-7.svg', rating: '4.8/5' }; modalOpen = true"
-          class="absolute bottom-0 inset-x-0 mx-auto w-full max-w-[170px] ptablet:max-w-[150px] transition-transform duration-300 transform-gpu group-hover:scale-110 cursor-pointer"
-          src="/img/illustrations/doctors/doctor-7.svg"
-          alt="Doctor"
-        />
-      </div>
-      <div class="font-sans mt-3">
-        <h4 class="font-semibold text-muted-800 dark:text-muted-100">
-          Dr. Howard Wright
-        </h4>
-        <p class="text-sm text-muted-400">Gynaecologist</p>
-      </div>
-      <div class="mt-2">
-        <p class="text-sm ptablet:text-xs text-muted-500 dark:text-muted-400">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ergo illi
-          intellegunt quid
-        </p>
-      </div>
-      <!-- Tooltips and icons commented out
-      <div class="flex items-center justify-between font-sans mt-3"> ... </div>
-      -->
-    </Card>
-  </div>
-  <!-- Doctor -->
-  <div x-show="activeCategory === 'all' || activeCategory === 'cardiology'" class="group">
-    <Card class="'p-4'">
-      <div
-        class="relative w-full h-40 rounded-lg bg-muted-200 dark:bg-muted-800 overflow-hidden"
-      >
-        <img
-          @click="activeDoctor = { name: 'Dr. Kyle Adams', title: 'Cardiologist', bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ergo illi intellegunt quid', img: '/img/illustrations/doctors/doctor-8.svg', rating: '4.7/5' }; modalOpen = true"
-          class="absolute bottom-0 inset-x-0 mx-auto w-full max-w-[170px] ptablet:max-w-[150px] transition-transform duration-300 transform-gpu group-hover:scale-110 cursor-pointer"
-          src="/img/illustrations/doctors/doctor-8.svg"
-          alt="Doctor"
-        />
-      </div>
-      <div class="font-sans mt-3">
-        <h4 class="font-semibold text-muted-800 dark:text-muted-100">
-          Dr. Kyle Adams
-        </h4>
-        <p class="text-sm text-muted-400">Cardiologist</p>
-      </div>
-      <div class="mt-2">
-        <p class="text-sm ptablet:text-xs text-muted-500 dark:text-muted-400">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ergo illi
-          intellegunt quid
-        </p>
-      </div>
-      <!-- Tooltips and icons commented out
-      <div class="flex items-center justify-between font-sans mt-3"> ... </div>
-      -->
-    </Card>
-  </div>
-  <!-- Doctor -->
-  <div x-show="activeCategory === 'all' || activeCategory === 'general'" class="group">
-    <Card class="'p-4'">
-      <div
-        class="relative w-full h-40 rounded-lg bg-muted-200 dark:bg-muted-800 overflow-hidden"
-      >
-        <img
-          @click="activeDoctor = { name: 'Dr. Emma Callaway', title: 'Generalist', bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ergo illi intellegunt quid', img: '/img/illustrations/doctors/doctor-9.svg', rating: '4.3/5' }; modalOpen = true"
-          class="absolute bottom-0 inset-x-0 mx-auto w-full max-w-[170px] ptablet:max-w-[150px] transition-transform duration-300 transform-gpu group-hover:scale-110 cursor-pointer"
-          src="/img/illustrations/doctors/doctor-9.svg"
-          alt="Doctor"
-        />
-      </div>
-      <div class="font-sans mt-3">
-        <h4 class="font-semibold text-muted-800 dark:text-muted-100">
-          Dr. Emma Callaway
-        </h4>
-        <p class="text-sm text-muted-400">Generalist</p>
-      </div>
-      <div class="mt-2">
-        <p class="text-sm ptablet:text-xs text-muted-500 dark:text-muted-400">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ergo illi
-          intellegunt quid
-        </p>
-      </div>
-      <!-- Tooltips and icons commented out
-      <div class="flex items-center justify-between font-sans mt-3"> ... </div>
-      -->
-    </Card>
-  </div>
-  <!-- Doctor -->
-  <div x-show="activeCategory === 'all' || activeCategory === 'general'" class="group">
-    <Card class="'p-4'">
-      <div
-        class="relative w-full h-40 rounded-lg bg-muted-200 dark:bg-muted-800 overflow-hidden"
-      >
-        <img
-          @click="activeDoctor = { name: 'Dr. Nasseer Al Hussein', title: 'Generalist', bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ergo illi intellegunt quid', img: '/img/illustrations/doctors/doctor-10.svg', rating: '4.9/5' }; modalOpen = true"
-          class="absolute bottom-0 inset-x-0 mx-auto w-full max-w-[170px] ptablet:max-w-[150px] transition-transform duration-300 transform-gpu group-hover:scale-110 cursor-pointer"
-          src="/img/illustrations/doctors/doctor-10.svg"
-          alt="Doctor"
-        />
-      </div>
-      <div class="font-sans mt-3">
-        <h4 class="font-semibold text-muted-800 dark:text-muted-100">
-          Dr. Nasseer Al Hussein
-        </h4>
-        <p class="text-sm text-muted-400">Generalist</p>
-      </div>
-      <div class="mt-2">
-        <p class="text-sm ptablet:text-xs text-muted-500 dark:text-muted-400">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ergo illi
-          intellegunt quid
-        </p>
-      </div>
-      <!-- Tooltips and icons commented out
-      <div class="flex items-center justify-between font-sans mt-3"> ... </div>
-      -->
-    </Card>
-  </div>
-  <!-- Doctor -->
-  <div x-show="activeCategory === 'all' || activeCategory === 'surgery'" class="group">
-    <Card class="'p-4'">
-      <div
-        class="relative w-full h-40 rounded-lg bg-muted-200 dark:bg-muted-800 overflow-hidden"
-      >
-        <img
-          @click="activeDoctor = { name: 'Dr. Kevin Wheeler', title: 'Surgeon', bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ergo illi intellegunt quid', img: '/img/illustrations/doctors/doctor-11.svg', rating: '4.3/5' }; modalOpen = true"
-          class="absolute bottom-0 inset-x-0 mx-auto w-full max-w-[170px] ptablet:max-w-[150px] transition-transform duration-300 transform-gpu group-hover:scale-110 cursor-pointer"
-          src="/img/illustrations/doctors/doctor-11.svg"
-          alt="Doctor"
-        />
-      </div>
-      <div class="font-sans mt-3">
-        <h4 class="font-semibold text-muted-800 dark:text-muted-100">
-          Dr. Kevin Wheeler
-        </h4>
-        <p class="text-sm text-muted-400">Surgeon</p>
-      </div>
-      <div class="mt-2">
-        <p class="text-sm ptablet:text-xs text-muted-500 dark:text-muted-400">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ergo illi
-          intellegunt quid
-        </p>
-      </div>
-      <!-- Tooltips and icons commented out
-      <div class="flex items-center justify-between font-sans mt-3"> ... </div>
-      -->
-    </Card>
-  </div>
-  <!-- Doctor -->
-  <div x-show="activeCategory === 'all' || activeCategory === 'dermatology'" class="group">
-    <Card class="'p-4'">
-      <div
-        class="relative w-full h-40 rounded-lg bg-muted-200 dark:bg-muted-800 overflow-hidden"
-      >
-        <img
-          @click="activeDoctor = { name: 'Dr. Adam Grant', title: 'Dermatologist', bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ergo illi intellegunt quid', img: '/img/illustrations/doctors/doctor-12.svg', rating: '4.9/5' }; modalOpen = true"
-          class="absolute bottom-0 inset-x-0 mx-auto w-full max-w-[170px] ptablet:max-w-[150px] transition-transform duration-300 transform-gpu group-hover:scale-110 cursor-pointer"
-          src="/img/illustrations/doctors/doctor-12.svg"
-          alt="Doctor"
-        />
-      </div>
-      <div class="font-sans mt-3">
-        <h4 class="font-semibold text-muted-800 dark:text-muted-100">
-          Dr. Adam Grant
-        </h4>
-        <p class="text-sm text-muted-400">Dermatologist</p>
-      </div>
-      <div class="mt-2">
-        <p class="text-sm ptablet:text-xs text-muted-500 dark:text-muted-400">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ergo illi
-          intellegunt quid
-        </p>
-      </div>
-      <!-- Tooltips and icons commented out
-      <div class="flex items-center justify-between font-sans mt-3"> ... </div>
-      -->
-    </Card>
-  </div>
+  
   
 <!-- Modal -->
 <div x-cloak x-show="modalOpen" x-transition.opacity class="fixed inset-0 z-50 flex items-center justify-center">

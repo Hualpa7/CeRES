@@ -25,6 +25,7 @@ Alpine.start();
 
 import "./components";
 import "./pages";
+import "./pages/animations";
 
 document.onreadystatechange = function () {
   if (document.readyState == "complete") {

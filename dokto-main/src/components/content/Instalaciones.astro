@@ -1,0 +1,500 @@
+---
+/**
+ * Instalaciones.astro
+ * Sección de instalaciones con scroll hori<div
+  id="instalaciones"
+  x-data="instalacionesShowcase()"
+  x-init="init()"
+  x-intersect="activeStep = 'spy-instalaciones'"
+  class="w-full"
+> tipo showcase.
+ * Cada panel representa un sector del centro: Gimnasio, Reacondicionamiento y Boxes.
+ * Usa Alpine.js (ya presente en el proyecto) para la interactividad.
+ */
+
+interface Sector {
+  number: string
+  label: string
+  title: string
+  subtitle: string
+  description: string
+  features: string[]
+  bgImage: string
+  thumbs: string[]
+}
+
+const sectores: Sector[] = [
+  {
+    number: "01",
+    label: "Instalación principal",
+    title: "Gimnasio Terapéutico",
+    subtitle: "Equipamiento de alta gama",
+    description:
+      "Más de 200 m² equipados con maquinaria de rehabilitación de última generación. Diseñado para trabajar fuerza, resistencia y coordinación dentro del plan kinésico de cada paciente, bajo supervisión profesional constante.",
+    features: ["200 m² de superficie", "Equipamiento profesional", "Supervisión constante", "Acceso inclusivo"],
+    bgImage:
+      "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=1600&q=85&auto=format&fit=crop",
+    thumbs: [
+      "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=320&q=70&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1571902943202-507ec2618e8f?w=320&q=70&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1540497077202-7c8a3999166f?w=320&q=70&auto=format&fit=crop",
+    ],
+  },
+  {
+    number: "02",
+    label: "Sector especializado",
+    title: "Reacondicionamiento Físico",
+    subtitle: "Trabajo funcional y propioceptivo",
+    description:
+      "Área dedicada al reacondicionamiento post-lesión. Equipada con plataformas de balance, tensores, colchonetas y accesorios para el trabajo propioceptivo y funcional en grupos reducidos o de forma individual.",
+    features: ["Trabajo funcional", "Propiocepción", "Grupos reducidos", "Post-cirugía"],
+    bgImage:
+      "https://images.unsplash.com/photo-1599058917765-a780eda07a3e?w=1600&q=85&auto=format&fit=crop",
+    thumbs: [
+      "https://images.unsplash.com/photo-1599058917765-a780eda07a3e?w=320&q=70&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1518611012118-696072aa579a?w=320&q=70&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=320&q=70&auto=format&fit=crop",
+    ],
+  },
+  {
+    number: "03",
+    label: "Atención personalizada",
+    title: "Boxes Individuales",
+    subtitle: "Privacidad y equipamiento completo",
+    description:
+      "Seis consultorios privados completamente equipados con camillas de última generación, equipos de electroterapia, ultrasonido y todo lo necesario para una sesión de máxima calidad en un ambiente de total privacidad.",
+    features: ["6 boxes privados", "100% privacidad", "Electroterapia y US", "Camillas premium"],
+    bgImage:
+      "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=1600&q=85&auto=format&fit=crop",
+    thumbs: [
+      "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=320&q=70&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1551076805-e1869033e561?w=320&q=70&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1516549655169-df83a0774514?w=320&q=70&auto=format&fit=crop",
+    ],
+  },
+]
+---
+
+<!--
+  El componente se auto-contiene: gestión de estado con Alpine.js,
+  estilos encapsulados con <style> y sin dependencias extra.
+  El scroll horizontal usa scroll-snap nativo del navegador
+  más un estado Alpine para sincronizar la barra de navegación.
+-->
+<div
+  id="instalaciones"
+  x-data="{
+    currentPanel: 0,
+    goToPanel(idx) {
+      const track = this.$refs.track
+      if (!track) return
+      const panelWidth = track.offsetWidth
+      track.scrollTo({ left: idx * panelWidth, behavior: 'smooth' })
+      this.currentPanel = idx
+    },
+    onScroll() {
+      const track = this.$refs.track
+      if (!track) return
+      const idx = Math.round(track.scrollLeft / track.offsetWidth)
+      if (idx !== this.currentPanel) {
+        this.currentPanel = idx
+      }
+    },
+    init() {
+      const track = this.$refs.track
+      if (!track) return
+
+      let isDown = false
+      let startX = 0
+      let scrollLeft = 0
+
+      track.addEventListener('mousedown', (e) => {
+        isDown = true
+        startX = e.pageX - track.offsetLeft
+        scrollLeft = track.scrollLeft
+        track.style.cursor = 'grabbing'
+      })
+
+      const stopDrag = () => {
+        if (!isDown) return
+        isDown = false
+        track.style.cursor = 'ew-resize'
+        const idx = Math.round(track.scrollLeft / track.offsetWidth)
+        this.goToPanel(idx)
+      }
+
+      track.addEventListener('mouseup', stopDrag)
+      track.addEventListener('mouseleave', stopDrag)
+
+      track.addEventListener('mousemove', (e) => {
+        if (!isDown) return
+        e.preventDefault()
+        const x = e.pageX - track.offsetLeft
+        const walk = (x - startX) * 1.5
+        track.scrollLeft = scrollLeft - walk
+      })
+
+      window.addEventListener('resize', () => {
+        const track = this.$refs.track
+        if (!track) return
+        track.scrollTo({ left: this.currentPanel * track.offsetWidth, behavior: 'instant' })
+      })
+    }
+  }"
+  x-init="init()"
+  x-intersect="activeStep = 'spy-instalaciones'"
+  class="w-full"
+>
+  <!-- Encabezado de sección -->
+  <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-10">
+    <div>
+      <h4 class="font-sans font-semibold text-xs tracking-widest uppercase mb-3 text-primary-500">
+        Infraestructura
+      </h4>
+      <h2 class="font-sans text-4xl font-medium text-muted-800 dark:text-muted-100">
+        Nuestras Instalaciones
+      </h2>
+    </div>
+    <p class="text-sm text-muted-400 dark:text-muted-500 flex items-center gap-2 sm:text-right">
+      <span class="inline-block w-6 h-px bg-muted-400 dark:bg-muted-500"></span>
+      Deslizá para explorar
+    </p>
+  </div>
+
+  <!-- Showcase: scroll horizontal con scroll-snap -->
+  <div
+    class="instalaciones-track rounded-2xl overflow-hidden"
+    x-ref="track"
+    @scroll.passive="onScroll()"
+    style="cursor: ew-resize;"
+  >
+    {
+      sectores.map((sector, idx) => (
+        <div
+          class="instalaciones-panel"
+          data-index={idx}
+          x-data={`{ activeThumb: 0 }`}
+        >
+          <!-- Imagen de fondo (cambia al hacer click en los thumbs) -->
+          <div class="instalaciones-panel__bg-wrap">
+            {sector.thumbs.map((thumb, ti) => (
+              <img
+                src={ti === 0 ? sector.bgImage : thumb.replace("w=320", "w=1600")}
+                alt={`${sector.title} — vista ${ti + 1}`}
+                loading={idx === 0 ? "eager" : "lazy"}
+                class="instalaciones-panel__bg"
+                x-show={`activeThumb === ${ti}`}
+                x-transition:enter="transition-opacity duration-500"
+                x-transition:enter-start="opacity-0"
+                x-transition:enter-end="opacity-100"
+                x-transition:leave="transition-opacity duration-300"
+                x-transition:leave-start="opacity-100"
+                x-transition:leave-end="opacity-0"
+              />
+            ))}
+            <!-- Gradiente overlay -->
+            <div class="instalaciones-panel__overlay" />
+          </div>
+
+          <!-- Contenido del panel -->
+          <div class="instalaciones-panel__content">
+            <!-- Número decorativo -->
+            <span class="instalaciones-panel__number" aria-hidden="true">
+              {sector.number}
+            </span>
+
+            <p class="font-sans font-semibold text-xs tracking-widest uppercase text-primary-400 mb-3">
+              {sector.label}
+            </p>
+
+            <h3 class="font-sans text-3xl sm:text-4xl lg:text-5xl font-semibold text-white leading-tight mb-2">
+              {sector.title}
+            </h3>
+            <p class="font-sans text-base text-primary-300 mb-5 font-medium">
+              {sector.subtitle}
+            </p>
+
+            <p class="font-sans text-sm sm:text-base text-white/70 leading-relaxed mb-6 max-w-md">
+              {sector.description}
+            </p>
+
+            <!-- Features -->
+            <div class="flex flex-wrap gap-2 mb-8">
+              {sector.features.map((feat) => (
+                <span class="instalaciones-feature-tag">
+                  {feat}
+                </span>
+              ))}
+            </div>
+
+            <!-- Miniaturas -->
+            <div class="flex gap-3" role="group" aria-label="Vistas del sector">
+              {sector.thumbs.map((thumb, ti) => (
+                <button
+                  type="button"
+                  class="instalaciones-thumb"
+                  x-bind:class={`activeThumb === ${ti} ? 'instalaciones-thumb--active' : ''`}
+                  @click={`activeThumb = ${ti}`}
+                  aria-label={`Ver imagen ${ti + 1} de ${sector.title}`}
+                >
+                  <img
+                    src={thumb}
+                    alt={`${sector.title} miniatura ${ti + 1}`}
+                    loading="lazy"
+                    class="w-full h-full object-cover"
+                  />
+                </button>
+              ))}
+            </div>
+          </div>
+        </div>
+      ))
+    }
+  </div>
+
+  <!-- Barra de navegación inferior -->
+  <nav
+    class="instalaciones-nav"
+    aria-label="Navegación de instalaciones"
+  >
+    {
+      sectores.map((sector, idx) => (
+        <button
+          type="button"
+          class="instalaciones-nav__btn"
+          x-bind:class={`currentPanel === ${idx} ? 'instalaciones-nav__btn--active' : ''`}
+          @click={`goToPanel(${idx})`}
+          x-bind:aria-current={`currentPanel === ${idx} ? 'true' : 'false'`}
+          aria-label={`Ver ${sector.title}`}
+        >
+          <!-- Indicador activo -->
+          <span
+            class="instalaciones-nav__indicator"
+            x-show={`currentPanel === ${idx}`}
+            x-transition:enter="transition-all duration-300"
+            x-transition:enter-start="w-0 opacity-0"
+            x-transition:enter-end="w-6 opacity-100"
+          />
+          <span class="instalaciones-nav__num">{sector.number}</span>
+          <span class="instalaciones-nav__title">{sector.title}</span>
+          <span class="instalaciones-nav__sub hidden sm:block">{sector.label}</span>
+        </button>
+      ))
+    }
+  </nav>
+</div>
+
+<!-- ─── Estilos encapsulados ─── -->
+<style>
+  /* Track: contenedor con scroll-snap horizontal */
+  .instalaciones-track {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    /* Permite arrastrar con el mouse */
+    user-select: none;
+  }
+  .instalaciones-track::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Cada panel ocupa el 100% del ancho del contenedor */
+  .instalaciones-panel {
+    position: relative;
+    flex: 0 0 100%;
+    min-width: 0;
+    scroll-snap-align: start;
+    height: 70vh;
+    min-height: 480px;
+    max-height: 720px;
+    overflow: hidden;
+  }
+
+  /* Imagen de fondo */
+  .instalaciones-panel__bg-wrap {
+    position: absolute;
+    inset: 0;
+  }
+  .instalaciones-panel__bg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.55) saturate(0.85);
+  }
+
+  /* Gradiente para legibilidad del texto */
+  .instalaciones-panel__overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to right,
+      rgba(10, 16, 31, 0.92) 0%,
+      rgba(10, 16, 31, 0.55) 55%,
+      rgba(10, 16, 31, 0.1) 100%
+    );
+  }
+
+  /* Contenido del panel */
+  .instalaciones-panel__content {
+    position: relative;
+    z-index: 10;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 2.5rem 2rem;
+  }
+  @media (min-width: 768px) {
+    .instalaciones-panel__content {
+      padding: 3rem 3.5rem;
+    }
+  }
+
+  /* Número decorativo grande en el fondo del contenido */
+  .instalaciones-panel__number {
+    position: absolute;
+    top: 1.5rem;
+    left: 2rem;
+    font-size: clamp(5rem, 12vw, 9rem);
+    font-weight: 700;
+    line-height: 1;
+    color: rgba(99, 102, 241, 0.1); /* primary-500 con opacidad */
+    pointer-events: none;
+    user-select: none;
+  }
+  @media (min-width: 768px) {
+    .instalaciones-panel__number {
+      left: 3rem;
+    }
+  }
+
+  /* Tags de features */
+  .instalaciones-feature-tag {
+    display: inline-block;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 0.35rem 0.85rem;
+    border: 1px solid rgba(99, 102, 241, 0.4);
+    color: rgb(165, 180, 252); /* primary-300 aprox */
+    border-radius: 999px;
+    transition: background-color 0.2s, border-color 0.2s;
+  }
+  .instalaciones-feature-tag:hover {
+    background-color: rgba(99, 102, 241, 0.15);
+    border-color: rgba(99, 102, 241, 0.7);
+  }
+
+  /* Miniaturas */
+  .instalaciones-thumb {
+    width: 5rem;
+    height: 3.5rem;
+    border-radius: 0.5rem;
+    overflow: hidden;
+    border: 2px solid transparent;
+    transition: border-color 0.25s, transform 0.2s, filter 0.3s;
+    filter: brightness(0.65) saturate(0.7);
+    cursor: pointer;
+  }
+  .instalaciones-thumb:hover {
+    filter: brightness(1) saturate(1);
+    transform: translateY(-2px);
+  }
+  .instalaciones-thumb--active {
+    border-color: rgb(99, 102, 241); /* primary-500 */
+    filter: brightness(1) saturate(1) !important;
+  }
+
+  /* Barra de navegación inferior */
+  .instalaciones-nav {
+    display: flex;
+    border-top: 1px solid;
+    /* usa colores de Tailwind vía CSS variables del tema */
+  }
+
+  /* Botón de nav */
+  .instalaciones-nav__btn {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.25rem;
+    padding: 1.25rem 1.25rem;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    border-right: 1px solid;
+    text-align: left;
+  }
+  .instalaciones-nav__btn:last-child {
+    border-right: none;
+  }
+  .instalaciones-nav__btn:hover {
+    background-color: rgba(99, 102, 241, 0.06);
+  }
+
+  /* Indicador de activo (línea arriba) */
+  .instalaciones-nav__indicator {
+    display: block;
+    height: 2px;
+    background-color: rgb(99, 102, 241);
+    margin-bottom: 0.5rem;
+    border-radius: 999px;
+  }
+
+  .instalaciones-nav__num {
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+  }
+
+  .instalaciones-nav__title {
+    font-size: 0.875rem;
+    font-weight: 600;
+  }
+
+  .instalaciones-nav__sub {
+    font-size: 0.7rem;
+    letter-spacing: 0.05em;
+  }
+</style>
+
+<!--
+  Los colores de border y text en la nav se aplican con Tailwind
+  directamente desde el HTML usando clases dinámicas vía Alpine.
+  Para los colores de la barra, usamos un wrapper con utilidades TW.
+-->
+<style is:global>
+  /* Colores de borde de la nav según el tema — necesita is:global para afectar elementos con Alpine */
+  #instalaciones .instalaciones-nav {
+    border-color: rgb(226 232 240); /* muted-200 */
+  }
+  .dark #instalaciones .instalaciones-nav {
+    border-color: rgb(30 41 59); /* muted-800 */
+  }
+  #instalaciones .instalaciones-nav__btn {
+    border-color: rgb(226 232 240);
+    color: rgb(100 116 139); /* muted-500 */
+  }
+  .dark #instalaciones .instalaciones-nav__btn {
+    border-color: rgb(30 41 59);
+    color: rgb(148 163 184); /* muted-400 */
+  }
+  #instalaciones .instalaciones-nav__btn.instalaciones-nav__btn--active {
+    color: rgb(99 102 241); /* primary-500 */
+  }
+  #instalaciones .instalaciones-nav__num {
+    color: rgb(99 102 241); /* primary-500 */
+  }
+  .dark #instalaciones .instalaciones-nav__btn.instalaciones-nav__btn--active {
+    color: rgb(129 140 248); /* primary-400 */
+  }
+</style>
+
+

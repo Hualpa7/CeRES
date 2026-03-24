@@ -19,36 +19,59 @@ import HeroMainModuleOne from "@components/hero/HeroMainModuleOne.astro";
             <h1
               class="font-medium text-4xl ptablet:text-5xl lg:text-5xl text-muted-800 dark:text-white"
             >
-              We help you find the Doctor you need
+              Sobre Nosotros
             </h1>
             <p class="text-lg text-muted-500 dark:text-muted-400">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Tibi hoc
-              incredibile, quod beatissimum. Quamquam te quidem video minime
-              esse deterritum.
+              CeRES - Centro de Rehabilitación Salta -  
+              Nació el 20 de octubre de
+              2013 con el objetivo de brindar a la sociedad salteña un espacio
+              profesional, completamente equipado para la recuperación y
+              rehabilitación traumatológica. Nuestro centro está integrado por
+              un equipo de profesionales altamente capacitados, con formación
+              técnica y experiencia clínica, que trabajan de manera
+              interdisciplinaria para ofrecer tratamientos personalizados y un
+              enfoque integral en cada proceso de recuperación.
             </p>
-            <div
-              class="w-full flex items-center justify-center ltablet:justify-start lg:justify-start gap-2"
-            >
-              <ButtonMain to={"/"} class="'min-w-[130px]'"
-                >Get Started</ButtonMain
-              >
-              <ButtonSub to={"/"} class="'min-w-[130px]'">Explore</ButtonSub
-              >
-            </div>
+            
           </div>
         </div>
       </div>
       <div class="relative col-span-12 ltablet:col-span-7 lg:col-span-7">
-        <img
-          src="/img/illustrations/hero.svg"
-          class="block dark:hidden w-full ltablet:max-w-[540px] max-w-[620px] mx-auto"
-          alt="Hero image"
-        />
-        <img
-          src="/img/illustrations/hero-dark.svg"
-          class="hidden dark:block w-full ltablet:max-w-[540px] max-w-[620px] mx-auto"
-          alt="Hero image"
-        />
+        <!-- Video Hero (Reemplaza las imágenes) -->
+        <video
+          class="block dark:hidden w-full ltablet:max-w-[540px] max-w-[620px] mx-auto rounded-lg"
+          autoplay
+          muted
+          loop
+          playsinline
+        >
+          <source src="/videos/hero.mp4" type="video/mp4" />
+          <source src="/videos/hero.webm" type="video/webm" />
+          <!-- Fallback a imagen si el video no carga -->
+          <img
+            src="/img/illustrations/hero.svg"
+            class="w-full ltablet:max-w-[540px] max-w-[620px] mx-auto"
+            alt="Hero image"
+          />
+        </video>
+
+        <!-- Video Hero Dark Mode -->
+        <video
+          class="hidden dark:block w-full ltablet:max-w-[540px] max-w-[620px] mx-auto rounded-lg"
+          autoplay
+          muted
+          loop
+          playsinline
+        >
+          <source src="/videos/hero-dark.mp4" type="video/mp4" />
+          <source src="/videos/hero-dark.webm" type="video/webm" />
+          <!-- Fallback a imagen si el video no carga -->
+          <img
+            src="/img/illustrations/hero-dark.svg"
+            class="w-full ltablet:max-w-[540px] max-w-[620px] mx-auto"
+            alt="Hero image"
+          />
+        </video>
         <!-- Decoration -->
         <div
           class="absolute top-6 left-0 h-14 w-14 hidden md:flex items-center justify-center rounded-full text-2xl bg-white dark:bg-muted-800 shadow-xl shadow-muted-300/30 dark:shadow-muted-900/50"
@@ -70,7 +93,7 @@ import HeroMainModuleOne from "@components/hero/HeroMainModuleOne.astro";
         >
           🦠
         </div>
-        <HeroMainModuleOne />
+       
       </div>
     </div>
   </div>
