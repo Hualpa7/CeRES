@@ -3,11 +3,11 @@ const { class: className } = Astro.props;
 ---
 
 <button
-  class="flex relative justify-center items-center w-10 h-10 focus:outline-none lg:hidden scale-90"
+  class="flex relative justify-center items-center w-10 h-10 focus:outline-none lg:hidden"
   :class={className}
   @click="$store.app.mobileOpen = !$store.app.mobileOpen"
 >
-  <div class="block top-1/2 left-6 w-4 -translate-x-1/2 -translate-y-1/2">
+  <div class="block top-1/2 left-1/2 w-4 -translate-x-1/2 -translate-y-1/2">
     <span
       class="block absolute w-7 h-0.5 bg-current transition duration-500 ease-in-out"
       :class=`[

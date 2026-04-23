@@ -4,203 +4,73 @@ import Logo from "@components/base/Logo.astro";
 ---
 
 <footer class="font-sans bg-white dark:bg-muted-900">
-  <Container>
-    <div class="px-5 py-24 mx-auto">
-      <div class="flex flex-wrap md:text-left text-center -mb-10 -mx-4">
-        <div class="w-full mb-10 ltablet:mb-0 lg:mb-0 ltablet:w-2/6 lg:w-2/6 px-4">
-          <div class="max-w-[280px] mx-auto md:mx-0">
-            <a
-              href="/"
-              class="flex items-center justify-center md:justify-start gap-3 mb-4"
-            >
-              <div class="text-primary-600 transition-all duration-300">
-                <Logo class="'w-9 h-9'" />
-              </div>
-              <span
-                class="font-sans text-lg tracking-widest text-muted-800 dark:text-muted-100"
-                >CeRES</span
-              >
-            </a>
-            <p class="text-sm text-muted-500 dark:text-muted-400 mb-10 md:mb-0">
-              Lorem Ipsum is simply dummy text of the printing and typesetting
-              industry. Lorem Ipsum has been.
+  
+  <!-- Sección de Ubicación con Mapa -->
+  <div class="border-t border-muted-200 dark:border-muted-800">
+    <Container>
+      <div class="px-5 py-12 mx-auto">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+          <!-- Información de Contacto -->
+          <div class="flex flex-col justify-center">
+            <h3 class="text-2xl md:text-3xl font-semibold text-muted-900 dark:text-white mb-4">
+              Nuestra Ubicación
+            </h3>
+            <p class="text-muted-600 dark:text-muted-300 mb-6">
+              Encontranos en el corazón de Salta
             </p>
+            <div class="space-y-4">
+              <div class="flex items-start gap-3">
+                <iconify-icon icon="fa6-solid:location-dot" class="text-primary-500 mt-1 flex-shrink-0"></iconify-icon>
+                <div>
+                  <p class="font-semibold text-muted-800 dark:text-muted-100">Dirección</p>
+                  <p class="text-sm text-muted-600 dark:text-muted-400">
+                    25 de Mayo 629, A4400 Salta, Argentina
+                  </p>
+                </div>
+              </div>
+              <div class="flex items-start gap-3">
+                <iconify-icon icon="fa6-solid:phone" class="text-primary-500 mt-1 flex-shrink-0"></iconify-icon>
+                <div>
+                  <p class="font-semibold text-muted-800 dark:text-muted-100">Teléfono</p>
+                  <p class="text-sm text-muted-600 dark:text-muted-400">
+                    Llamanos para más información
+                  </p>
+                </div>
+              </div>
+              <div class="flex items-start gap-3">
+                <iconify-icon icon="fa6-solid:envelope" class="text-primary-500 mt-1 flex-shrink-0"></iconify-icon>
+                <div>
+                  <p class="font-semibold text-muted-800 dark:text-muted-100">Email</p>
+                  <p class="text-sm text-muted-600 dark:text-muted-400">
+                    info@ceres.com.ar
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Mapa de Google Maps -->
+          <div class="relative w-full h-80 rounded-lg overflow-hidden shadow-lg">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3579.766840419385!2d-65.40840612345!3d-24.787600275000!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x941b5f5c3e5c5c5d%3A0x5c3e5c5c3e5c5c5e!2s25%20de%20Mayo%20629%2C%20A4400%20Salta!5e0!3m2!1ses-ES!2sar!4v1234567890"
+              width="100%"
+              height="100%"
+              style="border:0;"
+              allowfullscreen=""
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              class="absolute inset-0"
+            />
           </div>
         </div>
-        <div class="lg:w-1/6 ltablet:w-1/6 md:w-1/2 w-full px-4">
-          <h2
-            class="font-medium tracking-widest text-sm mb-5 text-muted-800 dark:text-muted-100"
-          >
-            RESOURCES
-          </h2>
-          <ul class="list-none space-y-3 mb-10">
-            <li>
-              <a
-                href="#"
-                class="text-sm text-muted-500 dark:text-muted-400 hover:text-primary-500 dark:hover:text-primary-500 transition-colors duration-300"
-                >Covid-19</a
-              >
-            </li>
-            <li>
-              <a
-                href="#"
-                class="text-sm text-muted-500 dark:text-muted-400 hover:text-primary-500 dark:hover:text-primary-500 transition-colors duration-300"
-                >About</a
-              >
-            </li>
-            <li>
-              <a
-                href="#"
-                class="text-sm text-muted-500 dark:text-muted-400 hover:text-primary-500 dark:hover:text-primary-500 transition-colors duration-300"
-                >Careers</a
-              >
-            </li>
-            <li>
-              <a
-                href="#"
-                class="text-sm text-muted-500 dark:text-muted-400 hover:text-primary-500 dark:hover:text-primary-500 transition-colors duration-300"
-                >Press</a
-              >
-            </li>
-          </ul>
-        </div>
-        <div class="lg:w-1/6 ltablet:w-1/6 md:w-1/2 w-full px-4">
-          <h2
-            class="font-medium tracking-widest text-sm mb-5 text-muted-800 dark:text-muted-100"
-          >
-            DOCTORS
-          </h2>
-          <ul class="list-none space-y-3 mb-10">
-            <li>
-              <a
-                href="#"
-                class="text-sm text-muted-500 dark:text-muted-400 hover:text-primary-500 dark:hover:text-primary-500 transition-colors duration-300"
-                >All Specialities</a
-              >
-            </li>
-            <li>
-              <a
-                href="#"
-                class="text-sm text-muted-500 dark:text-muted-400 hover:text-primary-500 dark:hover:text-primary-500 transition-colors duration-300"
-                >Cardiology</a
-              >
-            </li>
-            <li>
-              <a
-                href="#"
-                class="text-sm text-muted-500 dark:text-muted-400 hover:text-primary-500 dark:hover:text-primary-500 transition-colors duration-300"
-                >Surgery</a
-              >
-            </li>
-            <li>
-              <a
-                href="#"
-                class="text-sm text-muted-500 dark:text-muted-400 hover:text-primary-500 dark:hover:text-primary-500 transition-colors duration-300"
-                >Gynaecology</a
-              >
-            </li>
-          </ul>
-        </div>
-        <div class="lg:w-1/6 ltablet:w-1/6 md:w-1/2 w-full px-4">
-          <h2
-            class="font-medium tracking-widest text-sm mb-5 text-muted-800 dark:text-muted-100"
-          >
-            ASSISTANCE
-          </h2>
-          <ul class="list-none space-y-3 mb-10">
-            <li>
-              <a
-                href="#"
-                class="text-sm text-muted-500 dark:text-muted-400 hover:text-primary-500 dark:hover:text-primary-500 transition-colors duration-300"
-                >Hotline</a
-              >
-            </li>
-            <li>
-              <a
-                href="#"
-                class="text-sm text-muted-500 dark:text-muted-400 hover:text-primary-500 dark:hover:text-primary-500 transition-colors duration-300"
-                >Help Center</a
-              >
-            </li>
-            <li>
-              <a
-                href="#"
-                class="text-sm text-muted-500 dark:text-muted-400 hover:text-primary-500 dark:hover:text-primary-500 transition-colors duration-300"
-                >FAQs</a
-              >
-            </li>
-            <li>
-              <a
-                href="#"
-                class="text-sm text-muted-500 dark:text-muted-400 hover:text-primary-500 dark:hover:text-primary-500 transition-colors duration-300"
-                >Terms Of Service</a
-              >
-            </li>
-          </ul>
-        </div>
-        <div class="lg:w-1/6 ltablet:w-1/6 md:w-1/2 w-full px-4">
-          <h2
-            class="font-medium tracking-widest text-sm mb-5 text-muted-800 dark:text-muted-100"
-          >
-            DEVELOPERS
-          </h2>
-          <ul class="list-none space-y-3 mb-10">
-            <li>
-              <a
-                href="#"
-                class="text-sm text-muted-500 dark:text-muted-400 hover:text-primary-500 dark:hover:text-primary-500 transition-colors duration-300"
-                >Dokto Pro</a
-              >
-            </li>
-            <li>
-              <a
-                href="#"
-                class="text-sm text-muted-500 dark:text-muted-400 hover:text-primary-500 dark:hover:text-primary-500 transition-colors duration-300"
-                >Dokto Community</a
-              >
-            </li>
-            <li>
-              <a
-                href="#"
-                class="text-sm text-muted-500 dark:text-muted-400 hover:text-primary-500 dark:hover:text-primary-500 transition-colors duration-300"
-                >Documentation</a
-              >
-            </li>
-            <li>
-              <a
-                href="#"
-                class="text-sm text-muted-500 dark:text-muted-400 hover:text-primary-500 dark:hover:text-primary-500 transition-colors duration-300"
-                >API Reference</a
-              >
-            </li>
-          </ul>
-        </div>
       </div>
-    </div>
-  </Container>
+    </Container>
+  </div>
+
   <div class="border-t border-muted-200 dark:border-muted-800">
     <Container>
       <div class="px-5 py-8 flex flex-col md:flex-row mx-auto items-center">
-        <div
-          class="w-full ltablet:w-auto lg:w-auto flex flex-col md:flex-row items-center justify-center md:justify-start gap-y-2"
-        >
-          <div class="relative w-full sm:w-64 md:w-40 sm:mr-4 mr-2">
-            <input
-              type="text"
-              class="w-full h-10 bg-muted-100 dark:bg-muted-700 bg-opacity-50 rounded-lg border border-muted-300 dark:border-muted-600 text-sm text-muted-700 py-1 px-3 leading-8 tw-accessibility transition-colors duration-300 ease-in-out"
-              placeholder="Email Address"
-            />
-          </div>
-          <button
-            class="w-full md:w-auto h-10 inline-flex items-center justify-center text-white bg-primary-600 border-0 py-2 px-6 focus:outline-none hover:bg-primary-700 rounded-lg"
-            >Subscribe</button
-          >
-          <p
-            class="text-muted-500 text-sm md:ml-2 md:mt-0 mt-2 sm:text-left text-center"
-          >
-            to our Newsletter
-          </p>
-        </div>
+        
         <span
           class="inline-flex ltablet:ml-auto lg:ml-auto md:mt-0 mt-6 w-full justify-center md:justify-start md:w-auto"
         >

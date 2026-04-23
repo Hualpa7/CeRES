@@ -4,69 +4,117 @@ import ButtonMain from "@components/base/ButtonMain.astro";
 import ThemeToggler from "@components/base/ThemeToggler.astro";
 import Hamburger from "@components/base/Hamburger.astro";
 import NavbarSearchFilters from "@components/navigation/NavbarSearchFilters.astro";
+import logoCERES from "../../../public/img/logo/CeRES.png";
 ---
 
 <div
   x-cloak
   x-data="navbar()"
   x-on:scroll.window="scroll()"
-  class="fixed top-0 left-0 w-full z-50 transition-all duration-300"
-  :class="scrolled || $store.app.mobileOpen ? 'bg-white dark:bg-muted-900 shadow-lg shadow-muted-300/30 dark:shadow-muted-900/40' : ''"
+  class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-white dark:bg-muted-900 p-2"
 >
   <div
-    class="w-full max-w-7xl mx-auto flex items-center justify-between pl-4 pr-0 lg:pr-4 font-sans"
+    class="w-full max-w-7xl mx-auto flex items-center justify-between px-4 lg:px-4 font-sans"
   >
     <!-- Left -->
-    <div class="w-full lg:w-auto flex items-center gap-6">
-      <a href="/" class="flex items-center gap-3">
+    <div class="flex items-center gap-6 flex-grow">
+      <div class="flex items-center gap-3 flex-shrink-0">
         <div
           class="transition-all duration-300"
-          :class="scrolled || $store.app.mobileOpen ? 'text-rose-500 rotate-90' : 'text-primary-600'"
+          :class="scrolled || $store.app.mobileOpen ? 'rotate-90 logo-active' : 'logo-default'"
         >
-          <Logo class="'w-9 h-9'" />
+          <img
+            src={logoCERES.src}
+            alt="CeRES"
+            class="w-24 h-24 object-contain transition-all duration-300 logo-img"
+          />
         </div>
-        <span
-          class="font-sans text-lg tracking-widest  text-muted-800 dark:text-muted-100"
-          >CeRES</span
-        >
-      </a>
-     
-      <div class="flex items-center justify-center h-20 w-20 lg:hidden ml-auto">
+      
+      </div>
+
+      <div class="ml-auto lg:hidden flex-shrink-0">
         <Hamburger />
       </div>
     </div>
     <!-- Right -->
     <div
-      class="flex-col items-center lg:justify-end gap-x-6"
-      :class="$store.app.mobileOpen ? 'absolute top-[80px] left-0 w-full flex text-center px-6 pt-2 pb-6 border-t border-muted-200 dark:border-muted-800 bg-white dark:bg-muted-900 shadow-lg shadow-muted-300/40 dark:shadow-muted-900/50' : 'hidden lg:flex lg:flex-row'"
+      class="hidden lg:flex flex-row items-center justify-end gap-x-6 lg:gap-x-10"
     >
-      <div class="flex flex-col lg:flex-row items-center gap-x-6 lg:gap-x-10">
-        <div class="relative py-3 lg:py-5 after:content-[''] after:absolute after:-bottom-1.5 after:left-0 after:h-[3px] after:rounded-t-full after:transition-all after:duration-300 transition-colors duration-300"
+      <div class="flex flex-row items-center gap-x-6 lg:gap-x-10">
+        <div
+          class="relative py-5 after:content-[''] after:absolute after:-bottom-1.5 after:left-0 after:h-[3px] after:rounded-t-full after:transition-all after:duration-300 transition-colors duration-300"
           :class="activeStep === 'spy-1' ? 'text-primary-500 after:bg-primary-500 after:w-full' : 'text-slate-500 dark:text-slate-400 hover:text-muted-700 dark:hover:text-muted-100 after:w-0'"
         >
           <a href="#doctors">Equipo</a>
         </div>
-        <div class="relative py-3 lg:py-5 after:content-[''] after:absolute after:-bottom-1.5 after:left-0 after:h-[3px] after:rounded-t-full after:transition-all after:duration-300 transition-colors duration-300"
+        <div
+          class="relative py-5 after:content-[''] after:absolute after:-bottom-1.5 after:left-0 after:h-[3px] after:rounded-t-full after:transition-all after:duration-300 transition-colors duration-300"
           :class="activeStep === 'spy-2' ? 'text-primary-500 after:bg-primary-500 after:w-full' : 'text-slate-500 dark:text-slate-400 hover:text-muted-700 dark:hover:text-muted-100 after:w-0'"
         >
           <a href="#tratamientos">Tratamientos</a>
         </div>
-        <div class="relative py-3 lg:py-5 after:content-[''] after:absolute after:-bottom-1.5 after:left-0 after:h-[3px] after:rounded-t-full after:transition-all after:duration-300 transition-colors duration-300"
-          :class="activeStep === 'spy-3' ? 'text-primary-500 after:bg-primary-500 after:w-full' : 'text-slate-500 dark:text-slate-400 hover:text-muted-700 dark:hover:text-muted-100 after:w-0'"
+        <div
+          class="relative py-5 after:content-[''] after:absolute after:-bottom-1.5 after:left-0 after:h-[3px] after:rounded-t-full after:transition-all after:duration-300 transition-colors duration-300"
+          :class="activeStep === 'spy-terapias' ? 'text-primary-500 after:bg-primary-500 after:w-full' : 'text-slate-500 dark:text-slate-400 hover:text-muted-700 dark:hover:text-muted-100 after:w-0'"
         >
           <a href="#terapiasAlternativas">Terapias Alternativas</a>
         </div>
-        <div class="relative py-3 lg:py-5 after:content-[''] after:absolute after:-bottom-1.5 after:left-0 after:h-[3px] after:rounded-t-full after:transition-all after:duration-300 transition-colors duration-300"
-          :class="activeStep === 'spy-3' ? 'text-primary-500 after:bg-primary-500 after:w-full' : 'text-slate-500 dark:text-slate-400 hover:text-muted-700 dark:hover:text-muted-100 after:w-0'"
+        <div
+          class="relative py-5 after:content-[''] after:absolute after:-bottom-1.5 after:left-0 after:h-[3px] after:rounded-t-full after:transition-all after:duration-300 transition-colors duration-300"
+          :class="activeStep === 'spy-instalaciones' ? 'text-primary-500 after:bg-primary-500 after:w-full' : 'text-slate-500 dark:text-slate-400 hover:text-muted-700 dark:hover:text-muted-100 after:w-0'"
         >
           <a href="#instalaciones">Instalaciones</a>
         </div>
-       
-        <div class="py-3 lg:py-5">
+
+        <div class="py-5">
           <ThemeToggler />
         </div>
       </div>
-    
+    </div>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div
+    x-show="$store.app.mobileOpen"
+    x-transition
+    class="lg:hidden border-t border-muted-200 dark:border-muted-800 bg-white dark:bg-muted-900"
+  >
+    <div class="flex flex-col text-center px-4 py-4 gap-4">
+      <a
+        href="#doctors"
+        class="relative py-2 transition-colors duration-300"
+        :class="activeStep === 'spy-1' ? 'text-primary-500 font-semibold' : 'text-slate-500 dark:text-slate-400'"
+        @click="$store.app.mobileOpen = false"
+      >
+        Equipo
+      </a>
+      <a
+        href="#tratamientos"
+        class="relative py-2 transition-colors duration-300"
+        :class="activeStep === 'spy-2' ? 'text-primary-500 font-semibold' : 'text-slate-500 dark:text-slate-400'"
+        @click="$store.app.mobileOpen = false"
+      >
+        Tratamientos
+      </a>
+      <a
+        href="#terapiasAlternativas"
+        class="relative py-2 transition-colors duration-300"
+        :class="activeStep === 'spy-terapias' ? 'text-primary-500 font-semibold' : 'text-slate-500 dark:text-slate-400'"
+        @click="$store.app.mobileOpen = false"
+      >
+        Terapias Alternativas
+      </a>
+      <a
+        href="#instalaciones"
+        class="relative py-2 transition-colors duration-300"
+        :class="activeStep === 'spy-instalaciones' ? 'text-primary-500 font-semibold' : 'text-slate-500 dark:text-slate-400'"
+        @click="$store.app.mobileOpen = false"
+      >
+        Instalaciones
+      </a>
+      <div class="py-2">
+        <ThemeToggler />
+      </div>
     </div>
   </div>
 </div>

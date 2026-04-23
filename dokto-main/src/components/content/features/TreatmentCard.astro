@@ -28,9 +28,9 @@ const { id, image, title, description, fullDescription = description } = Astro.p
   data-card-description={description}
   data-card-full-description={fullDescription}
 >
-  <div class="bg-white dark:bg-muted-900 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 overflow-hidden h-full flex flex-col">
+  <div class="bg-white dark:bg-muted-900 rounded-lg shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden h-full flex flex-col border border-muted-100 dark:border-muted-800">
     <!-- Imagen -->
-    <div class="relative w-full h-64 overflow-hidden bg-muted-100 dark:bg-muted-800">
+    <div class="relative w-full h-48 overflow-hidden bg-muted-100 dark:bg-muted-800">
       <img
         src={image}
         alt={title}
@@ -39,20 +39,20 @@ const { id, image, title, description, fullDescription = description } = Astro.p
     </div>
 
     <!-- Contenido -->
-    <div class="p-6 flex flex-col justify-between flex-grow">
+    <div class="p-5 flex flex-col justify-between flex-grow">
       <div>
-        <h3 class="font-semibold text-xl text-muted-800 dark:text-white line-clamp-2 mb-2">
+        <h3 class="font-semibold text-lg text-muted-800 dark:text-white line-clamp-2 mb-2">
           {title}
         </h3>
-        <p class="text-sm text-muted-600 dark:text-muted-400 line-clamp-3">
+        <p class="text-sm text-muted-600 dark:text-muted-400 line-clamp-2">
           {description}
         </p>
       </div>
 
       <!-- CTA -->
-      <div class="pt-4">
+      <div class="pt-3 mt-3 border-t border-muted-100 dark:border-muted-800">
         <p class="text-xs text-primary-500 font-medium group-hover:text-primary-600 transition-colors">
-          Ver más →
+          Ver detalles →
         </p>
       </div>
     </div>

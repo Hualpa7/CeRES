@@ -19,6 +19,7 @@ Alpine.store("app", {
   },
   isDark: Alpine.$persist(false),
   isLoggedIn: Alpine.$persist(false),
+  mobileOpen: false,
 });
 //Start Alpine JS
 Alpine.start();
@@ -26,6 +27,7 @@ Alpine.start();
 import "./components";
 import "./pages";
 import "./pages/animations";
+import "./pages/animate-on-scroll";
 
 document.onreadystatechange = function () {
   if (document.readyState == "complete") {

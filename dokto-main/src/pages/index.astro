@@ -9,9 +9,9 @@ import IconBlock from "@components/content/IconBlock.astro";
 import Toolbar from "@components/content/doctors/grid/Toolbar.astro";
 import Filters from "@components/content/doctors/grid/Filters.astro";
 import Grid from "@components/content/doctors/grid/Grid.astro";
-import SideStatsRight from "@components/content/features/SideStatsRight.astro";
+import Tratamientos from "@components/content/features/Tratamientos.astro";
 import SideStatsLeft from "@components/content/features/SideStatsLeft.astro";
-import Pricing from "@components/content/Pricing.astro";
+import TerapiasAlternativas from "@components/content/TerapiasAlternativas.astro";
 import Cta from "@components/content/Cta.astro";
 import Testimonials from "@components/content/Testimonials.astro";
 import Instalaciones from "@components/content/Instalaciones.astro";
@@ -20,20 +20,20 @@ import Instalaciones from "@components/content/Instalaciones.astro";
 <Layout title="Home">
   <HeroMain />
 
-  <SectionMuted class="'fade-in-section'">
+  <SectionMuted>
     <Container>
       <SectionTitle
         title="Que tratamos?"
         subtitle="Texto descriptivo de los servicios que ofrecemos, con un lenguaje claro y accesible para nuestros pacientes."
         minititle="Nuestros Servicios"
+        class="'animate-scale'"
       />
-
       <div
         class="grid md:grid-cols-3 ltablet:grid-cols-4 lg:grid-cols-4 gap-x-6 gap-y-12"
         x-intersect="activeStep = ''"
       >
         <!-- Item -->
-        <div>
+        <div class="animate-on-scroll">
           <IconBlock
             title="Accidentes Laborales"
             text="Atención inmediata y especializada para trabajadores lesionados en el entorno laboral, con servicios de emergencia, rehabilitación y asesoramiento legal."
@@ -42,7 +42,7 @@ import Instalaciones from "@components/content/Instalaciones.astro";
           />
         </div>
         <!-- Item -->
-        <div>
+        <div class="animate-on-scroll">
           <IconBlock
             title="Lesiones Deportivas"
             text="Atención especializada para deportistas, con servicios de diagnóstico, tratamiento y rehabilitación."
@@ -51,7 +51,7 @@ import Instalaciones from "@components/content/Instalaciones.astro";
           />
         </div>
         <!-- Item -->
-        <div>
+        <div class="animate-on-scroll">
           <IconBlock
             title="Patologías Crónicas y Agudas"
             text="Aención integral para pacientes con enfermedades crónicas o agudas, con servicios de diagnóstico, tratamiento y seguimiento personalizado."
@@ -60,7 +60,7 @@ import Instalaciones from "@components/content/Instalaciones.astro";
           />
         </div>
         <!-- Item -->
-        <div>
+        <div class="animate-on-scroll">
           <IconBlock
             title="Lesiones Traumatológicas de niños"
             text="Atención especializada para niños con lesiones traumáticas, con servicios de diagnóstico, tratamiento y rehabilitación."
@@ -69,7 +69,7 @@ import Instalaciones from "@components/content/Instalaciones.astro";
           />
         </div>
         <!-- Item -->
-        <div>
+        <div class="animate-on-scroll">
           <IconBlock
             title="Neurorehabilitación"
             text="Atención especializada para pacientes con lesiones neurológicas, con servicios de diagnóstico, tratamiento y rehabilitación."
@@ -78,7 +78,7 @@ import Instalaciones from "@components/content/Instalaciones.astro";
           />
         </div>
         <!-- Item -->
-        <div>
+        <div class="animate-on-scroll">
           <IconBlock
             title="Audio consultas"
             text="Atención médica a distancia a través de llamadas telefónicas, con profesionales disponibles para resolver dudas y brindar orientación."
@@ -87,7 +87,7 @@ import Instalaciones from "@components/content/Instalaciones.astro";
           />
         </div>
         <!-- Item -->
-        <div>
+        <div class="animate-on-scroll">
           <IconBlock
             title="Citas"
             text="Gestión de citas médicas de manera eficiente, con recordatorios y seguimiento personalizado."
@@ -96,7 +96,7 @@ import Instalaciones from "@components/content/Instalaciones.astro";
           />
         </div>
         <!-- Item -->
-        <div>
+        <div class="animate-on-scroll">
           <IconBlock
             title="Medicina"
             text="Atención médica integral, con servicios de diagnóstico, tratamiento y seguimiento personalizado."
@@ -108,21 +108,23 @@ import Instalaciones from "@components/content/Instalaciones.astro";
     </Container>
   </SectionMuted>
 
-  <SectionMuted class="'border-b border-muted-200 dark:border-muted-800 fade-in-section'">
+  <SectionMuted
+    class="'border-b border-muted-200 dark:border-muted-800 fade-in-section'"
+  >
     <Container>
       <div id="doctors">
         <SectionTitle
           title="Equipo de Profesionales"
           subtitle="Nuestro equipo de profesionales altamente capacitados y dedicados a brindar atención médica de calidad, con experiencia en diversas especialidades para satisfacer las necesidades de nuestros pacientes."
           minititle="Nuestros Doctores"
-          class="'mx-auto text-center'"
+          class="'mx-auto text-center animate-on-scroll'"
         />
       </div>
 
       <div x-data="doctors()" x-intersect="activeStep = 'spy-1'">
         <!--Grid wrapper-->
         <div class="py-10">
-          <div class="grid grid-cols-12 md:gap-12 pb-20">
+          <div class="grid grid-cols-12 md:gap-12 pb-5">
             <!--Filters
             <div class="hidden lg:block col-span-12 lg:col-span-3">
               <Filters />
@@ -139,33 +141,112 @@ import Instalaciones from "@components/content/Instalaciones.astro";
   </SectionMuted>
 
   <SectionMuted class="'overflow-hidden fade-in-section'">
-    <Container>
-      <div class="py-10">
-        <SideStatsRight />
+    <div x-data="treatments()" x-intersect="activeStep = 'spy-2'">
+      <Container>
+        <div class="py-10 pt-0">
+          <Tratamientos />
+        </div>
+      </Container>
+
+      <!-- Modal de Tratamientos - Fullscreen -->
+      <!-- Modal -->
+      <div
+        x-cloak
+        class="fixed inset-0 z-50 flex items-center justify-center"
+        x-show="modalOpen && activeCard"
+      >
+        <!-- BACKDROP -->
+        <div
+          class="absolute inset-0 bg-black/60 backdrop-blur-sm"
+          x-show="modalOpen"
+          x-transition:enter="transition-opacity ease-out duration-300"
+          x-transition:enter-start="opacity-0"
+          x-transition:enter-end="opacity-100"
+          x-transition:leave="transition-opacity ease-in duration-200"
+          x-transition:leave-start="opacity-100"
+          x-transition:leave-end="opacity-0"
+          @click="modalOpen = false"
+        >
+        </div>
+
+        <!-- MODAL -->
+        <div
+          @click.stop
+          x-show="modalOpen"
+          x-transition:enter="transition transform ease-out duration-300"
+          x-transition:enter-start="opacity-0 scale-95 translate-y-4"
+          x-transition:enter-end="opacity-100 scale-100 translate-y-0"
+          x-transition:leave="transition transform ease-[cubic-bezier(0.4,0,0.2,1)] duration-250"
+          x-transition:leave-start="opacity-100 scale-100 translate-y-0"
+          x-transition:leave-end="opacity-0 scale-95 translate-y-4"
+          class="relative z-50 w-full max-w-2xl mx-3 max-h-[95vh]"
+        >
+          <div
+            class="bg-white dark:bg-muted-900 rounded-2xl shadow-2xl overflow-hidden"
+          >
+            <div class="flex flex-col md:flex-row gap-6 p-6">
+              <!-- IMAGEN -->
+              <div class="w-full md:w-2/5">
+                <div
+                  class="relative w-full h-64 md:h-80 rounded-lg overflow-hidden"
+                >
+                  <img
+                    :src="activeCard?.image"
+                    class="w-full h-full object-cover"
+                  />
+                </div>
+              </div>
+
+              <!-- CONTENIDO -->
+              <div class="w-full md:w-3/5 flex flex-col justify-between">
+                <div>
+                  <h3
+                    class="font-heading font-semibold text-3xl text-muted-800 dark:text-white mb-3"
+                    x-text="activeCard?.title"
+                  >
+                  </h3>
+
+                  <p
+                    class="text-base text-muted-600 dark:text-muted-400 leading-relaxed"
+                    x-text="activeCard?.fullDescription"
+                  >
+                  </p>
+                </div>
+
+                <!-- BOTÓN -->
+                <div class="flex pt-6 mt-auto">
+                  <button
+                    @click="modalOpen = false"
+                    class="flex-1 px-4 py-3 rounded-lg bg-primary-500 hover:bg-primary-600 text-white font-semibold transition-colors"
+                  >
+                    Cerrar
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
+    </div>
+  </SectionMuted>
+
+  <SectionMuted class="'fade-in-section'">
+    <Container>
+      <TerapiasAlternativas />
     </Container>
   </SectionMuted>
 
   <SectionMuted class="'fade-in-section'">
     <Container>
-      <Pricing />
-    </Container>
-  </SectionMuted>
-
-  <SectionMuted class="'fade-in-section'">
-    <Container>
-      <SectionTitle
-        title="Nuestras Instalaciones"
-        subtitle="Contamos con tres sectores diseñados para acompañar cada etapa de tu recuperación, desde la rehabilitación inicial hasta el retorno pleno a la actividad."
-        minititle="Infraestructura"
-      />
+      <div id="instalaciones">
+        <SectionTitle
+          title="Nuestras Instalaciones"
+          subtitle="Contamos con tres sectores diseñados para acompañar cada etapa de tu recuperación, desde la rehabilitación inicial hasta el retorno pleno a la actividad."
+          minititle="Infraestructura"
+          class="'animate-scale'"
+        />
+      </div>
       <Instalaciones />
-    </Container>
-  </SectionMuted>
-
-  <SectionMuted class="'fade-in-section'">
-    <Container>
-      <Cta />
     </Container>
   </SectionMuted>
 </Layout>

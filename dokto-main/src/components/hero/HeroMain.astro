@@ -1,100 +1,106 @@
----
-import ButtonMain from "@components/base/ButtonMain.astro";
-import ButtonSub from "@components/base/ButtonSub.astro";
-import HeroMainModuleOne from "@components/hero/HeroMainModuleOne.astro";
----
 
-<div
-  class="min-h-screen w-full overflow-hidden bg-muted-100 dark:bg-muted-1000"
->
-  <div class="min-h-screen w-full max-w-7xl mx-auto flex items-center px-4">
-    <div class="w-full grid grid-cols-12">
-      <div class="col-span-12 ltablet:col-span-5 lg:col-span-5">
-        <div
-          class="h-full ptablet:max-w-lg ptablet:mx-auto flex items-center mb-8 ltablet:mb-0 lg:mb-0"
-        >
-          <div
-            class="text-center ltablet:text-left lg:text-left font-sans space-y-4"
-          >
-            <h1
-              class="font-medium text-4xl ptablet:text-5xl lg:text-5xl text-muted-800 dark:text-white"
-            >
-              Sobre Nosotros
-            </h1>
-            <p class="text-lg text-muted-500 dark:text-muted-400">
-              CeRES - Centro de Rehabilitación Salta -  
-              Nació el 20 de octubre de
-              2013 con el objetivo de brindar a la sociedad salteña un espacio
-              profesional, completamente equipado para la recuperación y
-              rehabilitación traumatológica. Nuestro centro está integrado por
-              un equipo de profesionales altamente capacitados, con formación
-              técnica y experiencia clínica, que trabajan de manera
-              interdisciplinaria para ofrecer tratamientos personalizados y un
-              enfoque integral en cada proceso de recuperación.
-            </p>
-            
-          </div>
-        </div>
-      </div>
-      <div class="relative col-span-12 ltablet:col-span-7 lg:col-span-7">
-        <!-- Video Hero (Reemplaza las imágenes) -->
-        <video
-          class="block dark:hidden w-full ltablet:max-w-[540px] max-w-[620px] mx-auto rounded-lg"
-          autoplay
-          muted
-          loop
-          playsinline
-        >
-          <source src="/videos/hero.mp4" type="video/mp4" />
-          <source src="/videos/hero.webm" type="video/webm" />
-          <!-- Fallback a imagen si el video no carga -->
-          <img
-            src="/img/illustrations/hero.svg"
-            class="w-full ltablet:max-w-[540px] max-w-[620px] mx-auto"
-            alt="Hero image"
-          />
-        </video>
 
-        <!-- Video Hero Dark Mode -->
-        <video
-          class="hidden dark:block w-full ltablet:max-w-[540px] max-w-[620px] mx-auto rounded-lg"
-          autoplay
-          muted
-          loop
-          playsinline
-        >
-          <source src="/videos/hero-dark.mp4" type="video/mp4" />
-          <source src="/videos/hero-dark.webm" type="video/webm" />
-          <!-- Fallback a imagen si el video no carga -->
-          <img
-            src="/img/illustrations/hero-dark.svg"
-            class="w-full ltablet:max-w-[540px] max-w-[620px] mx-auto"
-            alt="Hero image"
-          />
-        </video>
-        <!-- Decoration -->
-        <div
-          class="absolute top-6 left-0 h-14 w-14 hidden md:flex items-center justify-center rounded-full text-2xl bg-white dark:bg-muted-800 shadow-xl shadow-muted-300/30 dark:shadow-muted-900/50"
-        >
-          💊
-        </div>
-        <div
-          class="absolute top-24 left-24 h-10 w-10 hidden md:flex items-center justify-center rounded-full text-2xl bg-white dark:bg-muted-800 shadow-xl shadow-muted-300/30 dark:shadow-muted-900/50"
-        >
-          ⚕️
-        </div>
-        <div
-          class="absolute -bottom-10 right-0 h-16 w-16 hidden md:flex items-center justify-center rounded-full text-4xl bg-white dark:bg-muted-800 shadow-xl shadow-muted-300/30 dark:shadow-muted-900/50"
-        >
-          💉
-        </div>
-        <div
-          class="absolute -top-12 left-1/3 h-16 w-16 hidden ptablet:hidden md:flex items-center justify-center rounded-full text-4xl bg-white dark:bg-muted-800 shadow-xl shadow-muted-300/30 dark:shadow-muted-900/50"
-        >
-          🦠
-        </div>
-       
+<div class="relative min-h-screen w-full overflow-hidden">
+  <!-- Video de fondo - Light Mode -->
+  <video
+    class="absolute inset-0 w-full h-full object-cover block dark:hidden"
+    autoplay
+    muted
+    loop
+    playsinline
+  >
+    <source src="/videos/hero.mp4" type="video/mp4" />
+    <source src="/videos/hero.webm" type="video/webm" />
+    <img
+      src="/img/illustrations/hero.svg"
+      class="absolute inset-0 w-full h-full object-cover"
+      alt="Hero background"
+    />
+  </video>
+
+  <!-- Video de fondo - Dark Mode -->
+  <video
+    class="absolute inset-0 w-full h-full object-cover hidden dark:block"
+    autoplay
+    muted
+    loop
+    playsinline
+  >
+    <source src="/videos/hero-dark.mp4" type="video/mp4" />
+    <source src="/videos/hero-dark.webm" type="video/webm" />
+    <img
+      src="/img/illustrations/hero-dark.svg"
+      class="absolute inset-0 w-full h-full object-cover"
+      alt="Hero background"
+    />
+  </video>
+
+  <!-- Overlay degradado para contraste -->
+  <div
+    class="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/70 dark:from-black/70 dark:via-black/55 dark:to-black/80"
+  ></div>
+
+  <!-- Contenido centrado sobre el video -->
+  <div class="relative z-10 min-h-screen flex items-center justify-center px-4 ">
+    <div
+      class="max-w-2xl w-full text-center animate-fade-largue animate-fade-in-up"
+      x-data="{ visible: false }"
+      x-intersect="visible = true"
+    >
+      <!-- Pill badge -->
+      <div
+        class="inline-flex items-center gap-2 mb-6 px-4 py-1.5 rounded-full border border-white/30 bg-white/10 backdrop-blur-sm mt-20"
+        :class="visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'"
+        style="transition: opacity 0.6s ease, transform 0.6s ease;"
+      >
+        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse "></span>
+        <span class="text-white/90 text-sm font-medium tracking-wide uppercase">
+          Desde 2013
+        </span>
       </div>
+
+      <!-- Título -->
+      <h1
+        class="text-5xl ptablet:text-6xl lg:text-7xl font-bold text-white leading-tight mb-6 drop-shadow-lg"
+        :class="visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'"
+        style="transition: opacity 0.7s ease 0.15s, transform 0.7s ease 0.15s;"
+      >
+        Sobre Nosotros
+      </h1>
+
+      <!-- Divider decorativo -->
+      <div
+        class="flex items-center justify-center gap-3 mb-6"
+        :class="visible ? 'opacity-100' : 'opacity-0'"
+        style="transition: opacity 0.6s ease 0.25s;"
+      >
+        <div class="h-px w-12 bg-white/40"></div>
+        <div class="w-1.5 h-1.5 rounded-full bg-white/60"></div>
+        <div class="h-px w-12 bg-white/40"></div>
+      </div>
+
+      <!-- Caja de texto con glassmorphism -->
+      <div
+        class="bg-white/10 dark:bg-black/20 backdrop-blur-md border border-white/20 rounded-2xl px-8 py-8 shadow-2xl mb-10"
+        :class="visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'"
+        style="transition: opacity 0.7s ease 0.3s, transform 0.7s ease 0.3s;"
+      >
+        <p class="text-lg leading-relaxed text-white/90 dark:text-white/85 font-sans">
+          <span class="font-semibold text-white">CeRES – Centro de Rehabilitación Salta</span>
+          nació el 20 de octubre de 2013 con el objetivo de brindar a la
+          sociedad salteña un espacio profesional, completamente equipado para
+          la recuperación y rehabilitación traumatológica. Nuestro centro está
+          integrado por un equipo de profesionales altamente capacitados, con
+          formación técnica y experiencia clínica, que trabajan de manera
+          interdisciplinaria para ofrecer tratamientos personalizados y un
+          enfoque integral en cada proceso de recuperación.
+        </p>
+      </div>
+
+      <!-- Botones opcionales -->
+     
     </div>
   </div>
+
+
 </div>

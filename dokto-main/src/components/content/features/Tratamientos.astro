@@ -1,0 +1,270 @@
+---
+import TreatmentCard from "@components/content/features/TreatmentCard.astro";
+import "../../../js/components/EmblaCarousel/base.css";
+import "../../../js/components/EmblaCarousel/embla.css";
+
+const treatments = [
+  {
+    id: "1",
+    title: "Kinesiología",
+    image: "/img/illustrations/tratamientos/kine1.png",
+    description: "Rehabilitación y fisioterapia especializada",
+    fullDescription:
+      "Ofrecemos servicios de kinesiología y rehabilitación física con profesionales altamente capacitados. Contamos con tecnología moderna para ayudarte a recuperar tu movilidad y bienestar.",
+  },
+  {
+    id: "2",
+    title: "Terapia Física",
+    image: "/img/illustrations/tratamientos/kine2.png",
+    description: "Tratamiento de lesiones musculares y óseas",
+    fullDescription:
+      "Especialistas en terapia física que utilizan las mejores técnicas para el tratamiento de lesiones deportivas, dolores crónicos y rehabilitación post-operatoria.",
+  },
+  {
+    id: "3",
+    title: "Masoterapia",
+    image: "/img/illustrations/tratamientos/kine3.jpg",
+    description: "Terapia manual y relajación muscular",
+    fullDescription:
+      "Servicios de masaje terapéutico para aliviar tensiones musculares, estrés y dolor crónico. Nuestros masoterapeutas utilizan técnicas comprobadas para tu bienestar.",
+  },
+  {
+    id: "4",
+    title: "Osteopatía",
+    image: "/img/illustrations/tratamientos/kine4.jpg",
+    description: "Tratamiento de alteraciones estructurales",
+    fullDescription:
+      "Tratamiento osteopático integral que aborda problemas de la columna vertebral, articulaciones y tejidos blandos para restaurar el equilibrio del cuerpo.",
+  },
+  {
+    id: "5",
+    title: "Acupuntura",
+    image: "/img/illustrations/tratamientos/kine5.jpg",
+    description: "Medicina tradicional y alternativa",
+    fullDescription:
+      "Acupuntura y técnicas de medicina tradicional china para el manejo del dolor y promoción de la salud. Combinamos tradición con evidencia científica.",
+  },
+];
+
+const stats = [
+  { label: "Pacientes Tratados", value: "2,500+", icon: "ph:users-duotone" },
+  { label: "Tasa de Satisfacción", value: "98%", icon: "ph:smiley-duotone" },
+  { label: "Especialidades", value: "5+", icon: "ph:stethoscope-duotone" },
+  { label: "Espera Promedio", value: "3-5 días", icon: "ph:clock-duotone" },
+];
+
+const process = [
+  {
+    step: "1",
+    title: "Primera Consulta",
+    description: "Evaluación completa de tu condición",
+  },
+  {
+    step: "2",
+    title: "Diagnóstico Personalizado",
+    description: "Plan de tratamiento a medida",
+  },
+  {
+    step: "3",
+    title: "Tratamiento Guiado",
+    description: "Sesiones con especialistas certificados",
+  },
+  {
+    step: "4",
+    title: "Seguimiento y Alta",
+    description: "Acompañamiento hasta tu recuperación total",
+  },
+];
+---
+
+<div
+  id="tratamientos"
+  class="flex flex-col lg:flex-row gap-8 w-full py-6 animate-from-left"
+>
+  <!-- Lado Izquierdo - Información y Proceso -->
+  <div class="w-full lg:w-1/2 flex flex-col gap-8">
+    <!-- Título -->
+    <div class="space-y-4">
+      <h4 class="font-sans font-semibold text-xs tracking-widest uppercase mb-3 text-primary-500">
+        Servicios Médicos
+      </h4>
+      <h2 class="font-heading font-medium text-3xl lg:text-4xl text-muted-800 dark:text-white">
+        Nuestros Tratamientos
+      </h2>
+      <p class="font-sans text-base text-muted-500 dark:text-muted-400">
+        Contamos con un equipo de profesionales médicos altamente capacitados para brindarte la mejor atención.
+      </p>
+    </div>
+
+    <!-- Estadísticas -->
+    <div class="grid grid-cols-2 gap-4">
+      {
+        stats.map((stat) => (
+          <div class="bg-muted-50 dark:bg-muted-800/50 rounded-lg p-4 border border-muted-200 dark:border-muted-700 hover:shadow-lg transition-shadow duration-300">
+            <div class="flex items-start gap-3 mb-2">
+              <iconify-icon
+                icon={stat.icon}
+                class="text-primary-500 text-xl flex-shrink-0"
+              ></iconify-icon>
+              <div>
+                <p class="text-2xl font-bold text-primary-500">{stat.value}</p>
+                <p class="text-xs text-muted-600 dark:text-muted-400 font-medium">
+                  {stat.label}
+                </p>
+              </div>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+
+    <!-- Proceso de Tratamiento -->
+    <div class="space-y-4">
+      <h3 class="font-semibold text-lg text-muted-800 dark:text-white">Nuestro Proceso</h3>
+      <div class="space-y-3">
+        {
+          process.map((item, index) => (
+            <div class="flex gap-4 items-start animate-on-scroll">
+              <!-- Círculo del paso -->
+              <div class="flex-shrink-0">
+                <div class="flex items-center justify-center w-10 h-10 rounded-full bg-gradient-to-br from-primary-500 to-primary-600 text-white font-bold text-sm">
+                  {item.step}
+                </div>
+                {index < process.length - 1 && (
+                  <div class="w-1 h-8 bg-primary-200 dark:bg-primary-900 mx-auto mt-2"></div>
+                )}
+              </div>
+              <!-- Contenido -->
+              <div class="pt-1">
+                <h4 class="font-semibold text-muted-800 dark:text-white text-sm">
+                  {item.title}
+                </h4>
+                <p class="text-xs text-muted-600 dark:text-muted-400">
+                  {item.description}
+                </p>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+
+  <!-- Lado Derecho - Carrusel -->
+  <div class="w-full lg:w-1/2 flex flex-col justify-center">
+    <div class="relative animate-scale">
+      <div class="embla">
+        <div class="embla__viewport">
+          <div class="embla__container">
+            {
+              treatments.map((treatment) => (
+                <TreatmentCard
+                  id={treatment.id}
+                  image={treatment.image}
+                  title={treatment.title}
+                  description={treatment.description}
+                  fullDescription={treatment.fullDescription}
+                />
+              ))
+            }
+          </div>
+        </div>
+        <div class="embla__controls">
+          <div class="embla__buttons">
+            <button
+              class="embla__button embla__button--prev embla__button--disabled"
+              type="button"
+            >
+              <svg class="embla__button__svg" viewBox="0 0 532 532">
+                <path
+                  fill="currentColor"
+                  d="M355.66 11.354c13.793-13.805 36.208-13.805 50.001 0 13.785 13.804 13.785 36.238 0 50.034L201.22 266l204.442 204.61c13.785 13.805 13.785 36.239 0 50.044-13.793 13.796-36.208 13.796-50.002 0a5994246.277 5994246.277 0 0 0-229.332-229.454 35.065 35.065 0 0 1-10.326-25.126c0-9.2 3.393-18.26 10.326-25.2C172.192 194.973 332.731 34.31 355.66 11.354Z"
+                ></path>
+              </svg>
+            </button>
+            <button
+              class="embla__button embla__button--next embla__button--disabled"
+              type="button"
+            >
+              <svg class="embla__button__svg" viewBox="0 0 532 532">
+                <path
+                  fill="currentColor"
+                  d="M176.34 520.646c-13.793 13.805-36.208 13.805-50.001 0-13.785-13.804-13.785-36.238 0-50.034L330.78 266 126.34 61.391c-13.785-13.805-13.785-36.239 0-50.044 13.793-13.796 36.208-13.796 50.002 0 22.928 22.947 206.395 206.507 229.332 229.454a35.065 35.065 0 0 1 10.326 25.126c0 9.2-3.393 18.26-10.326 25.2-45.865 45.901-206.404 206.564-229.332 229.52Z"
+                ></path>
+              </svg>
+            </button>
+          </div>
+          <div class="embla__dots"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<script>
+  import EmblaCarousel from "embla-carousel";
+  import { addDotButtonAndClickHandlers } from "../../../js/components/EmblaCarousel/EmblaCarouselDotButton";
+  import { addPrevNextButtonClickHandlers } from "../../../js/components/EmblaCarousel/EmblaCarouselArrowButtons";
+
+  const OPTIONS = { loop: true };
+
+  // Esperar a que el DOM esté listo
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initCarousel);
+  } else {
+    initCarousel();
+  }
+
+  function initCarousel() {
+    try {
+      const emblaNode = document.querySelector(".embla") as HTMLElement;
+      if (!emblaNode) {
+        console.warn("Embla container not found");
+        return;
+      }
+
+      const viewportNode = emblaNode.querySelector(
+        ".embla__viewport",
+      ) as HTMLElement;
+      const prevBtn = emblaNode.querySelector(
+        ".embla__button--prev",
+      ) as HTMLElement;
+      const nextBtn = emblaNode.querySelector(
+        ".embla__button--next",
+      ) as HTMLElement;
+      const dotsNode = emblaNode.querySelector(".embla__dots") as HTMLElement;
+
+      if (!viewportNode) {
+        console.warn("Embla viewport not found");
+        return;
+      }
+
+      console.log("Initializing Embla Carousel...");
+      const emblaApi = EmblaCarousel(viewportNode, OPTIONS);
+
+      console.log(
+        "Embla API methods available:",
+        Object.keys(emblaApi).filter((k) => typeof emblaApi[k] === "function"),
+      );
+
+      if (prevBtn && nextBtn) {
+        console.log("Adding prev/next handlers...");
+        addPrevNextButtonClickHandlers(emblaApi, prevBtn, nextBtn);
+      } else {
+        console.warn("Prev or next button not found");
+      }
+
+      if (dotsNode) {
+        console.log("Adding dot handlers...");
+        addDotButtonAndClickHandlers(emblaApi, dotsNode);
+      } else {
+        console.warn("Dots container not found");
+      }
+
+      console.log("Embla Carousel initialized successfully");
+    } catch (error) {
+      console.error("Error initializing Embla Carousel:", error);
+    }
+  }
+</script>
