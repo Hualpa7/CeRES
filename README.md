@@ -4,55 +4,44 @@
 
 ---
 
-# Vista previa
 
-> _Las imágenes ilustrativas se agregarán a continuación._
-
-<!-- Reemplazá las rutas con las imágenes reales que subas al repo -->
-<!-- Ejemplo:
-![Hero](./assets/screenshots/hero.png)
-![Servicios](./assets/screenshots/servicios.png)
--->
-
----
-
-##  Secciones de la landing page
+##  Vista previa a las secciones de la landing page
 
 La landing page está compuesta por las siguientes secciones, dispuestas en una única página de desplazamiento continuo:
 
- 1.  Navbar / Barra de navegación
+ ## 1.  Navbar / Barra de navegación
 Menú de navegación fijo en la parte superior que permite acceder rápidamente a cada sección de la página. Incluye el logotipo de CeRES y los enlaces de anclaje hacia las distintas secciones. En dispositivos móviles se colapsa en un menú hamburguesa (implementado con Alpine.js).
 
 ---
 
- 2. Hero / Portada principal
+ ## 2. Hero / Portada principal
 Sección de bienvenida que ocupa el área visible al cargar la página. Presenta el nombre del consultorio, un mensaje de bienvenida o eslogan. Informacion sobre el consultorio.
 
 
-[Hero](./public/img/samples/nosotros.jpg) 
+[Portada](dokto-main/public/img/samples/nosotros.png) 
 
 ---
 
  3. Servicios
 Se detallan cada uno de los servicios que dispone el consultorio.
 
-[Servicios](./public/img/samples/servicios.jpg) 
+[Servicios](dokto-main/public/img/samples/servicios.png) 
 
 ---
 
  4.  Equipo / Profesionales
 Presentación del equipo de profesionales que integra CeRES. Cada integrante cuenta con su foto, nombre,  especialidad, y una breve reseña. Esta sección busca generar confianza y cercanía con los potenciales pacientes.
 
-[Equipo](./public/img/samples/equipo1.jpg) 
-[Equipo](./public/img/samples/equipo2.jpg) 
+[Equipo1](dokto-main/public/img/samples/equipo1.png) 
+[Equipo2](dokto-main/public/img/samples/equipo2.png) 
 
 ---
 
  5.  Tratamientos 
 Grilla de tarjetas que describe los distintos tratamientos que ofrece el consultorio. Cada tarjeta se presenta en un carrusel. Seguidamente se encuentra la seccion de terapias complementarias. Permite que el paciente identifique rápidamente si el consultorio cubre su necesidad.
 
-[Tratamientos](./public/img/samples/tratamientos1.jpg) 
-[Tratamientos](./public/img/samples/tratamientos2.jpg) 
+[Tratamientos1](dokto-main/public/img/samples/tratamientos1.png) 
+[Tratamientos2](dokto-main/public/img/samples/tratamientos2.png) ) 
 
 
 ---
@@ -60,9 +49,9 @@ Grilla de tarjetas que describe los distintos tratamientos que ofrece el consult
  6.  Instalaciones 
 Se dispone de una seccion donde se presenta de forma interactiva cada una de las areas e infraestrucuturas del consultorio, presentando e invitando al posibles clientes el espacio en el cual se brindan los servicios.
 
-[Instalaciones](./public/img/samples/instalaciones1.jpg) 
-[Instalaciones](./public/img/samples/instalaciones2.jpg) 
-[Instalaciones](./public/img/samples/instalaciones3.jpg) 
+[Instalaciones1](dokto-main/public/img/samples/instalaciones1.png) 
+[Instalaciones2](dokto-main/public/img/samples/instalaciones2.png) 
+[Instalaciones3](dokto-main/public/img/samples/instalaciones3.png) 
 
 ---
 
@@ -70,7 +59,7 @@ Se dispone de una seccion donde se presenta de forma interactiva cada una de las
  7.  Ubicación / Mapa
 Sección que muestra la ubicación física del consultorio, ya sea mediante un mapa embebido (Google Maps) o mediante la dirección y referencias para llegar. Facilita que los pacientes encuentren el lugar de atención.
 
-[Ubicacion](./public/img/samples/ubicacion.jpg) 
+[Ubicacion](dokto-main/public/img/samples/ubicacion.png) 
 
 ---
 
