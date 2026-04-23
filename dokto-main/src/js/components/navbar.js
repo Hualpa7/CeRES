@@ -3,6 +3,7 @@ export function navbar() {
     scrolled: false,
     height: 60,
     mobileOpen: false,
+    scrollY:0,
     scroll() {
       let scrollValue = window.scrollY;
       if (scrollValue >= this.height) {

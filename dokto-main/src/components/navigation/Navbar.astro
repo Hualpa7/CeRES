@@ -1,9 +1,8 @@
 ---
-import Logo from "@components/base/Logo.astro";
-import ButtonMain from "@components/base/ButtonMain.astro";
+
+
 import ThemeToggler from "@components/base/ThemeToggler.astro";
 import Hamburger from "@components/base/Hamburger.astro";
-import NavbarSearchFilters from "@components/navigation/NavbarSearchFilters.astro";
 import logoCERES from "../../../public/img/logo/CeRES.png";
 ---
 
@@ -20,16 +19,16 @@ import logoCERES from "../../../public/img/logo/CeRES.png";
     <div class="flex items-center gap-6 flex-grow">
       <div class="flex items-center gap-3 flex-shrink-0">
         <div
-          class="transition-all duration-300"
-          :class="scrolled || $store.app.mobileOpen ? 'rotate-90 logo-active' : 'logo-default'"
+          class="transition-all duration-200 ease-out"
+          :class="scrolled || $store.app.mobileOpen ? 'rotate-[360deg] scale-90' : 'rotate-0 scale-100'"
         >
           <img
             src={logoCERES.src}
             alt="CeRES"
-            class="w-24 h-24 object-contain transition-all duration-300 logo-img"
+            class="w-24 h-24 object-contain transition-all duration-200"
+            :class="scrolled ? 'brightness-0 invert opacity-80' : 'brightness-100 opacity-100'"
           />
         </div>
-      
       </div>
 
       <div class="ml-auto lg:hidden flex-shrink-0">
