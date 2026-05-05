@@ -2,6 +2,7 @@
 
 > Sitio web del consultorio **CeRES**, desarrollado como una landing page moderna, accesible y responsiva para presentar los servicios, el equipo profesional y facilitar el contacto con los pacientes.
 
+enlace desploy en Vercel: https://ceres-mocha.vercel.app/
 ---
 
 
